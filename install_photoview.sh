@@ -24,8 +24,8 @@ apt install -y libdlib-dev libblas-dev libatlas-base-dev liblapack-dev libjpeg-t
 
 # Install Golang
 apt install golang-go
-wget https://golang.org/dl/go1.17.linux-amd64.tar.gz
-tar -C /usr/local -xzf go1.17.linux-amd64.tar.gz
+#wget https://golang.org/dl/go1.17.linux-amd64.tar.gz
+#tar -C /usr/local -xzf go1.17.linux-amd64.tar.gz
 rm go1.16.linux-amd64.tar.gz
 echo 'export PATH=$PATH:/usr/local/go/bin' >> "$HOME/.bashrc" && source "$HOME/.bashrc"
 go version
