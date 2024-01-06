@@ -23,6 +23,7 @@ apt install -y libdlib-dev libblas-dev libatlas-base-dev liblapack-dev libjpeg-t
   libdlib19 libdlib-dev libblas-dev libatlas-base-dev liblapack-dev libjpeg-dev libheif-dev pkg-config gpg
 
 # Install Golang
+apt install golang-go
 wget https://golang.org/dl/go1.16.linux-amd64.tar.gz
 tar -C /usr/local -xzf go1.16.linux-amd64.tar.gz
 rm go1.16.linux-amd64.tar.gz
