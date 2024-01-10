@@ -24,7 +24,7 @@ EXIT;
 EOF
 
 # Install Piwigo
-curl -o piwigo.zip http://piwigo.org/download/dlcounter....
+curl -o piwigo.zip https://piwigo.org/download/dlcounter.php?code=latest
 unzip piwigo.zip
 mv piwigo /var/www/html/piwigo
 chown -R www-data:www-data /var/www/html/piwigo/
