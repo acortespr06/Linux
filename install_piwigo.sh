@@ -4,14 +4,14 @@
 apt update && apt upgrade -y
 
 # Set hostname
-hostnamectl set-hostname ex.example.com
-echo "server_ip ex.example.com ex" >> /etc/hosts
+# hostnamectl set-hostname ex.example.com
+# echo "server_ip ex.example.com ex" >> /etc/hosts
 
 # Install LAMP Server
 apt install apache2 mariadb-server php libapache2-mod-php php-common php-mbstring php-xmlrpc php-gd php-xml php-intl php-mysql php-cli php php-ldap php-zip php-curl unzip git -y
 sed -i 's/memory_limit = .*/memory_limit = 512M/' /etc/php/7.4/apache2/php.ini
 sed -i 's/upload_max_filesize = .*/upload_max_filesize = 200M/' /etc/php/7.4/apache2/php.ini
-echo "date.timezone = Asia/Kolkata" >> /etc/php/7.4/apache2/php.ini
+echo "date.timezone =america/chicago" >> /etc/php/7.4/apache2/php.ini
 systemctl restart apache2
 
 # Create a Database for Piwigo
@@ -36,9 +36,8 @@ chown -R www-data:www-data /var/www/html/piwigo/
 # Configure Apache for Piwigo
 cat <<EOL > /etc/apache2/sites-available/piwigo.conf
 <VirtualHost *:80>
-    ServerAdmin admin@example.com
     DocumentRoot /var/www/html/piwigo
-    ServerName ex.example.com
+    ServerName cloud.nexthorion.me
 
     <Directory /var/www/html/piwigo/>
         Options +FollowSymlinks
