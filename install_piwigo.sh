@@ -3,6 +3,9 @@
 # Update Server
 apt update && apt upgrade -y
 
+# Install required packages
+apt install curl unzip -y
+
 # Set hostname
 # hostnamectl set-hostname ex.example.com
 # echo "server_ip ex.example.com ex" >> /etc/hosts
