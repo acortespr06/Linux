@@ -5,6 +5,9 @@ from datetime import datetime
 import guilded_webhook as guilded
 from bs4 import BeautifulSoup
 
+# Define the list of keywords to skip
+skip_keywords = ["(Tamil Dub)", "(Telugu Dub)", "(Hindi Dub)", "(Italian Dub)", "(Castilian Dub)", "(French Dub)", "(German Dub)", "(Spanish Dub)", "(Portuguese Dub)"]
+
 async def post_to_guilded(rss_feed_url, webhook_url):
     try:
         # Fetch and parse the RSS feed
@@ -25,6 +28,12 @@ async def post_to_guilded(rss_feed_url, webhook_url):
             # Check if the entry is from today
             if pub_date.date() == datetime.now().date():
                 title = entry.title
+
+                # Check if any of the skip keywords are present in the title
+                if any(keyword in title for keyword in skip_keywords):
+                    print(f'Skipping entry with title: {title}')
+                    continue
+
                 link = entry.link
                 thumbnail_url = entry.media_thumbnail[0]['url'] 
                 description = entry.description if hasattr(entry, 'description') else ''
