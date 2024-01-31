@@ -1,7 +1,3 @@
-Certainly! Here's a detailed README for your shell script:
-
----
-
 # create_service.sh - Systemd Service Setup Script
 
 ## Description
