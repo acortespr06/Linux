@@ -1,4 +1,4 @@
-# create_service.sh - Systemd Service Setup Script
+# install_rss_service.sh - Systemd Service Setup Script
 
 ## Description
 `install_rss_service.sh` is a shell script that simplifies the process of setting up a systemd service on a Linux system. It automates the creation of a systemd service unit, downloads a Python script from a specified GitHub repository, and configures the service to run the Python script at regular intervals (every 60 seconds). This script is especially useful for automating tasks and background processes that need to be executed periodically.
