@@ -49,7 +49,7 @@ fi
 # Clone the GitHub repository specified in GITHUB_REPO
 if [ -n "$GITHUB_REPO" ]; then
     log "Getting GitHub script: $GITHUB_REPO"
-    wget "$DIRECTORY_PATH" "$GITHUB_REPO"
+    wget -O "$DIRECTORY_PATH/script.sh" "$GITHUB_REPO"
     if [ $? -eq 0 ]; then
         log "Downloaded and moved GitHub script to $DIRECTORY_PATH"
     else
