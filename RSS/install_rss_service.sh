@@ -63,6 +63,7 @@ fi
 
 # Create the config.ini file with the specified content
 cat <<EOF > "$DIRECTORY_PATH/config.ini"
+[Default]
 rss_feed_url = $RSS_FEED_URL
 webhook_url = $WEBHOOK_URL
 rss_timezone = $RSS_TZ
