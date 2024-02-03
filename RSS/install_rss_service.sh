@@ -9,11 +9,14 @@
 # Version: 1.0
 ###############################################################################
 
+# Define the log file
+LOG_FILE="$(pwd)/install_rss_service.log"
 
-
-# Function to display a message with a timestamp
+# Function to display a message with a timestamp and save it to a log file
 function log() {
-    echo "$(date +'%Y-%m-%d %H:%M:%S') - $1"
+    local log_message="$(date +'%Y-%m-%d %H:%M:%S') - $1"
+    echo "$log_message"
+    echo "$log_message" >> "$LOG_FILE"
 }
 
 # Parse the configuration file
@@ -46,15 +49,18 @@ fi
 # Clone the GitHub repository specified in GITHUB_REPO
 if [ -n "$GITHUB_REPO" ]; then
     log "Getting GitHub script: $GITHUB_REPO"
-    wget "$GITHUB_REPO" "$DIRECTORY_PATH"
-    if [ $? -ne 0 ]; then
-        log "Failed to getting Github scripty"
+    wget -O "$DIRECTORY_PATH" "$GITHUB_REPO"
+    if [ $? -eq 0 ]; then
+        log "Downloaded and moved GitHub script to $DIRECTORY_PATH"
+    else
+        log "Failed to download and move GitHub script"
         exit 1
     fi
 else
     log "GITHUB_REPO not specified in the configuration file."
     exit 1
 fi
+
 
 # Create the config.ini file with the specified content
 cat <<EOF > "$DIRECTORY_PATH/config.ini"
