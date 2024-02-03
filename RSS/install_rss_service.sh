@@ -61,7 +61,6 @@ else
     exit 1
 fi
 
-
 # Create the config.ini file with the specified content
 cat <<EOF > "$DIRECTORY_PATH/config.ini"
 rss_feed_url = $RSS_FEED_URL
@@ -83,7 +82,7 @@ cat <<EOF > "/etc/systemd/system/$SERVICE_FILE_NAME.service"
 Description=$SERVICE_DESCRIPTION
 
 [Service]
-ExecStart=/usr/bin/python3 $PYTHON_SCRIPT_PATH
+ExecStart=/usr/bin/python3 "$DIRECTORY_PATH/script.py"
 Restart=always
 User=$USERNAME
 
@@ -92,20 +91,13 @@ WantedBy=multi-user.target
 EOF
 
 # Add the chmod +x command here to make the script executable
-chmod +x "$PYTHON_SCRIPT_PATH"
+chmod +x "$DIRECTORY_PATH/script.py"
 
 if [ $? -eq 0 ]; then
     log "Created systemd service file: /etc/systemd/system/$SERVICE_FILE_NAME.service"
-    log "Changed permissions of $PYTHON_SCRIPT_PATH to make it executable"
+    log "Changed permissions of $DIRECTORY_PATH/script.py to make it executable"
 else
-    log "Failed to create systemd service file or change permissions of $PYTHON_SCRIPT_PATH"
-    exit 1
-fi
-
-if [ $? -eq 0 ]; then
-    log "Created systemd service file: /etc/systemd/system/$SERVICE_FILE_NAME.service"
-else
-    log "Failed to create systemd service file"
+    log "Failed to create systemd service file or change permissions of $DIRECTORY_PATH/script.py"
     exit 1
 fi
 
