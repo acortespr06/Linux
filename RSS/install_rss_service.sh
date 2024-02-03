@@ -45,10 +45,10 @@ fi
 
 # Clone the GitHub repository specified in GITHUB_REPO
 if [ -n "$GITHUB_REPO" ]; then
-    log "Cloning GitHub repository: $GITHUB_REPO"
+    log "Getting GitHub script: $GITHUB_REPO"
     wget "$GITHUB_REPO" "$DIRECTORY_PATH"
     if [ $? -ne 0 ]; then
-        log "Failed to clone GitHub repository"
+        log "Failed to getting Github scripty"
         exit 1
     fi
 else
