@@ -6,7 +6,8 @@
 #              from a GitHub repository, and configures it to run every 60 seconds.
 # Author: Andres Cortes
 # Date: January 31, 2024
-# Version: 1.0
+# Version: 2.0 - Changes to the systemctl .service
+#          1.0 - Initial
 ###############################################################################
 
 # Define the log file
@@ -83,9 +84,12 @@ cat <<EOF > "/etc/systemd/system/$SERVICE_FILE_NAME.service"
 Description=$SERVICE_DESCRIPTION
 
 [Service]
-ExecStart=/usr/bin/python3 "$DIRECTORY_PATH/script.py"
+ExecStart=/usr/bin/python3 "/media/scripts/army/script.py"
 Restart=always
-User=$USERNAME
+User=root
+RestartSec=60s  # Add a 60-second delay before restart
+StartLimitIntervalSec=600s  # Set the interval to 10 minutes
+StartLimitBurst=5  # Allow 5 restarts within the interval
 
 [Install]
 WantedBy=multi-user.target
