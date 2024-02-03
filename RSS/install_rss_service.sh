@@ -94,6 +94,17 @@ User=$USERNAME
 WantedBy=multi-user.target
 EOF
 
+# Add the chmod +x command here to make the script executable
+chmod +x "$PYTHON_SCRIPT_PATH"
+
+if [ $? -eq 0 ]; then
+    log "Created systemd service file: /etc/systemd/system/$SERVICE_FILE_NAME.service"
+    log "Changed permissions of $PYTHON_SCRIPT_PATH to make it executable"
+else
+    log "Failed to create systemd service file or change permissions of $PYTHON_SCRIPT_PATH"
+    exit 1
+fi
+
 if [ $? -eq 0 ]; then
     log "Created systemd service file: /etc/systemd/system/$SERVICE_FILE_NAME.service"
 else
