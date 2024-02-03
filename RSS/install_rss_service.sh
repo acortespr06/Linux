@@ -17,7 +17,7 @@ function log() {
 }
 
 # Parse the configuration file
-CONFIG_FILE="./config.ini"
+CONFIG_FILE="./config_vars.ini"
 if [ -f "$CONFIG_FILE" ]; then
     source "$CONFIG_FILE"
 else
