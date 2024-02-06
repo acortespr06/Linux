@@ -87,9 +87,9 @@ Description=$SERVICE_DESCRIPTION
 ExecStart=/usr/bin/python3 "/media/scripts/army/script.py"
 Restart=always
 User=root
-RestartSec=60s  # Add a 60-second delay before restart
-StartLimitIntervalSec=600s  # Set the interval to 10 minutes
-StartLimitBurst=5  # Allow 5 restarts within the interval
+RestartSec=60s  
+StartLimitIntervalSec=600s
+StartLimitBurst=5
 
 [Install]
 WantedBy=multi-user.target
