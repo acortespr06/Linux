@@ -84,7 +84,7 @@ cat <<EOF > "/etc/systemd/system/$SERVICE_FILE_NAME.service"
 Description=$SERVICE_DESCRIPTION
 
 [Service]
-ExecStart=/usr/bin/python3 "/media/scripts/army/script.py"
+ExecStart=/usr/bin/python3 "$DIRECTORY_PATH/script.py"
 Restart=always
 User=root
 RestartSec=60s  
